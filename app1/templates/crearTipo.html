@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="card shadow-sm border-0">
+	<div class="card-body">
+    	<h3 class="mb-4 text-primary">
+    		<i class="fa-solid fa-plus me-2"></i>Crear Nuevo Tipo de Mascota
+    	</h3>
+
+    	<form method="POST" action="{% url 'app1:registrarTipo' %}">
+        	{% csrf_token %}
+			<!--PREGUNTA 2 - CREACION DEL FORMULARIO PARA CREAR TIPOS DE MASCOTAS-->
+        
+			<!--FIN DE CODIGO - OBSERVAR QUE EL ATRIBUTO ACTION DEL FORMULARIO YA SE ENCUENTRA CONFIGURADO-->
+      	</form>
+    </div>
+</div>
+{% endblock %}
