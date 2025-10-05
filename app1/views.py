@@ -99,10 +99,21 @@ def detalleMascota(request, idMascota):
     if request.method == "POST" and mascota.estado == "Disponible":
         # INICIO DEL CODIGO
         # OBTENER DATOS DEL ADOPTANTE
-        # CREAR OBJETO DE LA CLASE Persona
-        # CREAR EL OBJETO ADOPCION, REVISAR LOS ATRIBUTOS DE LA CLASE
-        # ACTUALIZAR EL ESTADO DEL OBJETO mascota A "Adoptado"
+        nombre = request.POST.get('nombre')
+        email = request.POST.get('email')
+        telefono = request.POST.get('telefono')     
 
+        # CREAR OBJETO DE LA CLASE Persona
+        persona = Persona.objects.create( nombre=nombre, email=email, telefono=telefono)
+        persona.save()
+
+        # CREAR EL OBJETO ADOPCION, REVISAR LOS ATRIBUTOS DE LA CLASE
+        nueva_adopcion = Adopcion(mascota=mascota, persona=persona, fecha_adopcion=datetime.now().strftime("%d/%m/%Y %H:%M"))
+        nueva_adopcion.save()
+        
+        # ACTUALIZAR EL ESTADO DEL OBJETO mascota A "Adoptado"
+        mascota.estado = "Adoptado"
+        mascota.save(update_fields=["estado"])
 
 
         # FIN DEL CODIGO
