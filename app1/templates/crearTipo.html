@@ -10,7 +10,25 @@
     	<form method="POST" action="{% url 'app1:registrarTipo' %}">
         	{% csrf_token %}
 			<!--PREGUNTA 2 - CREACION DEL FORMULARIO PARA CREAR TIPOS DE MASCOTAS-->
-        
+			<div class="mb-3">
+				<label for="nombre" class="form-label">Nombre del Tipo</label>
+				<input type="text" class="form-control" id = 'nombre' name="nombre" placeholder="Ej: Perro">
+			</div>
+			
+			<div class="mb-3">
+				<label for="decripcion" class="form-label">Descripción</label>
+				<textarea class="form-control" id="decripcion" name="descripcion" rows="3" placeholder="Ej: Mascotas caninas de todas las razas" required></textarea>
+			</div>
+
+			<button type="submit" class="btn btn-primary">
+				<i class="fa-solid fa-check me-1"></i>
+				Guardar
+			</button>
+
+			<a href="{% url 'app1:home' %}" class="btn btn-secondary">
+          		<i class="fa-solid fa-arrow-left me-1"></i> Cancelar
+        		</a>
+
 			<!--FIN DE CODIGO - OBSERVAR QUE EL ATRIBUTO ACTION DEL FORMULARIO YA SE ENCUENTRA CONFIGURADO-->
       	</form>
     </div>
