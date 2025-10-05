@@ -8,7 +8,11 @@
       <tr>
         <!--PREGUNTA 4 - CREAR EL ENCABEZADO DE LA TABLA DE LA LISTA DE ADOPTANTES-->
 
-
+        <th scope="col">Mascota</th>
+        <th scope="col">Adoptante</th>
+        <th scope="col">Email</th>
+        <th scope="col">Teléfono</th>
+        <th scope="col">Fecha de adopción</th>
 
         
       </tr>
@@ -16,6 +20,23 @@
     <tbody>
 
       <!--PREGUNTA 4 - CREAR EL CUERPO DE LA TABLA CON LOS DATOS DE LOS ADOPTANTES-->
+
+        {% for adopcion in adopciones %}
+          <tr>
+            <td>{{ adopcion.mascota.nombre }}</td>
+            <td>{{ adopcion.persona.nombre }}</td>
+            <td>{{ adopcion.persona.email }}</td>
+            <td>{{ adopcion.persona.telefono }}</td>
+            <td>{{ adopcion.fecha_adopcion }}</td>
+          </tr>
+
+        {% empty %}
+
+        <tr><td colspan="5">No hay adopciones registradas.</td></tr>
+
+        {% endfor %}
+
+
       <!--REVISAR EL SITIO WEB : https://afsegovia.pythonanywhere.com/ PARA EL DESARROLLO DE LA LISTA DE ADOPTANTES-->
 
     </tbody>
